@@ -5,6 +5,7 @@ import com.myblog.myblog.service.PostService;
 import com.myblog.myblog.service.impl.PostResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ public class PostController {
     }
 //http://localhost:8090/api/posts
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> createPost(@Valid  @RequestBody PostDto postDTO ,BindingResult result) {
 
         if (result.hasErrors())
@@ -60,8 +62,9 @@ public class PostController {
        return new ResponseEntity<>(postService.getPostById(id),HttpStatus.OK);
 
 
-    }
+    }//http://localhost:8090/api/posts/2
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public  ResponseEntity<PostDto>updatePost(@RequestBody PostDto postdto,@PathVariable ("id") Long id){
         PostDto postresponse = postService.updatePost(postdto, id);
         return  ResponseEntity.ok(postresponse);
@@ -69,6 +72,7 @@ public class PostController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
 public  ResponseEntity<String>deletePostById(@PathVariable("id")Long id){
 postService.deletePostById(id);
        return new ResponseEntity<>("Post deleted by Id successfully!!!!....",HttpStatus.OK);
