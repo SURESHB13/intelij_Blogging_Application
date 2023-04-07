@@ -9,11 +9,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -107,13 +109,11 @@ public class PostServiceImpl implements PostService {
     }
 
 
+
     private PostDto mapToDTO(Post post){
         PostDto dto = modelMapper.map(post, PostDto.class);
         return dto;
     }
-    private Post mapToEntity(PostDto postDto){
-        Post post = modelMapper.map(postDto, Post.class);
-        return post;
-    }
+
 
 }

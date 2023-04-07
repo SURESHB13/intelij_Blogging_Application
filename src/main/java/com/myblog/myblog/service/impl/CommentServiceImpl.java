@@ -99,11 +99,6 @@ public class CommentServiceImpl implements CommentService {
         commentRepository.delete(comment);
     }
 
-    public ResponseEntity<Post> getPostById(Long postId) {
-        Optional<Post> post = postRepository.findById(postId);
-        return post.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
 
 
     CommentDto mapToDto(Comment newComment) {
