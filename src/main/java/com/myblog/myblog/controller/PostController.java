@@ -3,6 +3,7 @@ package com.myblog.myblog.controller;
 import com.myblog.myblog.payload.PostDto;
 import com.myblog.myblog.service.PostService;
 import com.myblog.myblog.service.impl.PostResponse;
+import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/posts/")
+@Api(value="/api/posts/",tags = "post Management")
 public class PostController {
    private PostService postService;
 //http:localhost:8090/api/posts
