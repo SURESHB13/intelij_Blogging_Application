@@ -2,7 +2,7 @@ package com.myblog.myblog.controller;
 
 import com.myblog.myblog.payload.CommentDto;
 import com.myblog.myblog.service.CommentService;
-import io.swagger.annotations.Api;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
-@Api(value="/api/",tags = "comment Management")
+
 public class CommentController {
     private CommentService commentService;
     public CommentController(CommentService commentService) {

@@ -3,7 +3,7 @@ package com.myblog.myblog.controller;
 import com.myblog.myblog.payload.PostDto;
 import com.myblog.myblog.service.PostService;
 import com.myblog.myblog.service.impl.PostResponse;
-import io.swagger.annotations.Api;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/posts/")
-@Api(value="/api/posts/",tags = "post Management")
 public class PostController {
    private PostService postService;
 //http:localhost:8090/api/posts
@@ -39,9 +38,9 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    //http://localost:8090/api/posts/?pageNo=0&pageSize=5
+    //http://locahost:8090/api/posts/?pageNo=0&pageSize=5
 
-    //http://localost:8090/api/posts/?pageNo=0&pageSize=5&sortBy=id&sortDir=asc
+    //http://locahost:8090/api/posts/?pageNo=0&pageSize=5&sortBy=id&sortDir=asc
     @GetMapping
     public ResponseEntity<PostResponse> getAllPostsThroughPaginationAndSorting(
             @RequestParam(value = "pageNo", defaultValue = "10", required = false) int pageNo,
@@ -81,10 +80,7 @@ postService.deletePostById(id);
     }
 
 
-
-
-
-
-
-
+    @GetMapping("/search")
+    public List<PostDto> getPostsBySearch(@RequestParam("keyword") String keyword){
+        return postService.getPostsBySearch(keyword);}
 }
