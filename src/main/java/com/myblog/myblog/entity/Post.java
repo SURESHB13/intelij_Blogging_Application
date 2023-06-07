@@ -1,6 +1,4 @@
 package com.myblog.myblog.entity;
-
-import ch.qos.logback.classic.db.names.ColumnName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
